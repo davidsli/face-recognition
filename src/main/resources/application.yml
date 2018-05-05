@@ -1,0 +1,23 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/facere?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+  thymeleaf:
+    mode: LEGACYHTML5
+
+mybatis:
+    type-aliases-package: com.lvmofang.manager.model
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    tyust.gjl.facerecognition.mapper: debug
+
+debug: true
