@@ -1,10 +1,12 @@
+var web_root = "http://127.0.0.1:8080";
+
 $("input").on('change', preview);
 
 var dataURL = null;
 
 function preview(e) {
     if (e.target.files == null) {
-        alert("please select picture")
+        alert("please select picture");
         return
     }
     var file = e.target.files[0];
@@ -83,11 +85,13 @@ $("#submit").click(function () {
                 }
             }
             selector.append("<figure data-am-widget=\"figure\" class=\"am am-figure am-figure-default \"   data-am-figure=\"{  pureview: 'true' }\">" +
-                "<img src=\"" + url + "\" data-rel=\"" + url + "\"/>" +
+                "<img src=\"" + web_root + url + "\" data-rel=\"" + web_root + url + "\" alt=\"" +
+                value.person.username + " : 匹配度" + Math.round(value.compareValue * 100)  + "%" + "\" />" +
                 "<figcaption class=\"am-figure-capition-btm\">" +
-                value.person.username + " : " + Math.round(value.compareValue * 100)  + "%" +
+                value.person.username + " : 匹配度" + Math.round(value.compareValue * 100)  + "%" +
                 "</figcaption></figure>");
         });
+        AMUI.figure.init();
     }).error(function (err) {
         console.error(err);
     });
