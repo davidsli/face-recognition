@@ -50,6 +50,7 @@ $("#submit").click(function () {
     }).success(function (res) {
         console.log(res)
         alert(res.data)
+        $(".color-table-upload").empty();
     }).error(function (err) {
         console.error(err);
     });

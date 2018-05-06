@@ -23,9 +23,12 @@ import java.util.concurrent.Future;
 
 import static org.bytedeco.javacpp.helper.opencv_imgproc.cvCalcHist;
 import static org.bytedeco.javacpp.opencv_core.CV_HIST_ARRAY;
+import static org.bytedeco.javacpp.opencv_core.cvReleaseImage;
 import static org.bytedeco.javacpp.opencv_imgcodecs.cvLoadImage;
+import static org.bytedeco.javacpp.opencv_imgcodecs.cvSaveImage;
 import static org.bytedeco.javacpp.opencv_imgproc.cvCompareHist;
 import static org.bytedeco.javacpp.opencv_imgproc.cvNormalizeHist;
+import static org.bytedeco.javacpp.opencv_imgproc.cvSmooth;
 import static org.opencv.imgcodecs.Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE;
 import static org.opencv.imgproc.Imgproc.CV_COMP_CORREL;
 
@@ -41,6 +44,8 @@ public class JavaCVService {
 
     private static final Resource CLASSIFIER_RESOURCE = new ClassPathResource("haarcascade_frontalface_alt.xml");
 
+    private CascadeClassifier faceDetector = null;
+
     @Autowired
     PersonMapper personMapper;
 
@@ -48,6 +53,23 @@ public class JavaCVService {
         nu.pattern.OpenCV.loadShared();
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         logger.info("\nRunning FaceDetector");
+    }
+
+    public JavaCVService() {
+        try {
+            this.faceDetector = new CascadeClassifier(CLASSIFIER_RESOURCE.getFile().getPath());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void smooth(String path) {
+        opencv_core.IplImage image = cvLoadImage(path);
+        if (image != null) {
+            cvSmooth(image, image);
+            cvSaveImage(path, image);
+            cvReleaseImage(image);
+        }
     }
 
     public double comparePictures(String imagePath1, String imagePath2) {
@@ -76,12 +98,17 @@ public class JavaCVService {
         return cvCompareHist(histogram1, histogram2, CV_COMP_CORREL);
     }
 
-    public boolean detectFace(String imageName, boolean save) throws Exception {
+
+    public boolean detectFace(String imagePath, String saveImageName, boolean save) throws Exception {
+
+        if (imagePath == null || "".equals(imagePath)) {
+            return false;
+        }
 
         logger.info("Running DetectFace ... ");
-        CascadeClassifier faceDetector =
-                new CascadeClassifier(CLASSIFIER_RESOURCE.getFile().getPath());
-        Mat image = Imgcodecs.imread(new ClassPathResource("static/upload/images/" + imageName).getFile().getPath());
+
+
+        Mat image = Imgcodecs.imread(imagePath);
 
         MatOfRect faceDetections = new MatOfRect();
 
@@ -97,12 +124,11 @@ public class JavaCVService {
             return true;
         }
         // 在每一个识别出来的人脸周围画出一个方框
-        Rect rect = rects[0];
-
-        Imgproc.rectangle(image, new Point(rect.x - 2, rect.y - 2),
-                new Point(rect.x + rect.width, rect.y + rect.height),
-                new Scalar(0, 255, 0));
-        String outFile = new ClassPathResource("static/upload/faceimages").getFile().getPath() + "/" + imageName;
+//        Rect rect = rects[0];
+//        Imgproc.rectangle(image, new Point(rect.x - 2, rect.y - 2),
+//                new Point(rect.x + rect.width, rect.y + rect.height),
+//                new Scalar(0, 255, 0));
+        String outFile = new ClassPathResource("static/upload/faceimages").getFile().getPath() + "/" + saveImageName;
         Imgcodecs.imwrite(outFile, image);
         logger.info(String.format("人脸识别成功，人脸图片文件为： %s", outFile));
         return true;

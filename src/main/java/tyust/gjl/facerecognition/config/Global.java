@@ -6,6 +6,6 @@ package tyust.gjl.facerecognition.config;
  */
 public class Global {
 
-    public static final double MATCH_PERCENT = 0.7;
+    public static final double MATCH_PERCENT = 0.5;
 
 }

@@ -54,7 +54,7 @@ public class PictureController {
         String path = rootPath + "/" + imageName;
         file.transferTo(new File(path));
 
-        if (javaCVService.detectFace(imageName, true)) {
+        if (javaCVService.detectFace(path, imageName, true)) {
             userService.add(username, imageName);
             ControllerUtils.setReturnData(data, "200", "success");
         } else {
@@ -81,7 +81,7 @@ public class PictureController {
         String path = rootPath + "/" + imageName;
         file.transferTo(new File(path));
 
-        if (!javaCVService.detectFace(imageName, false)) {
+        if (!javaCVService.detectFace(path, imageName, false)) {
             ControllerUtils.setReturnData(data, "400", "the picture has no face or more than on face");
             return data;
         }
