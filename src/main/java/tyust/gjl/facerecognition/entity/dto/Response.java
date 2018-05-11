@@ -9,6 +9,10 @@ public class Response {
     private String code;
     private String data;
 
+    public Response(String code, String data) {
+        this.code = code;
+        this.data = data;
+    }
 
     public String getCode() {
         return code;
