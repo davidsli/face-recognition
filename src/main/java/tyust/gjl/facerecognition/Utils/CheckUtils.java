@@ -15,5 +15,4 @@ public class CheckUtils {
                 !"".equals(username) && !"".equals(password);
     }
 
-
 }
