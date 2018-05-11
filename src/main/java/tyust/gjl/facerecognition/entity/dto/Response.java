@@ -7,7 +7,12 @@ package tyust.gjl.facerecognition.entity.dto;
 public class Response {
 
     private String code;
-    private String data;
+    private Object data;
+
+    public Response(){
+        this.code = "400";
+        this.data = "error";
+    }
 
     public Response(String code, String data) {
         this.code = code;
@@ -23,11 +28,11 @@ public class Response {
         return this;
     }
 
-    public String getData() {
+    public Object getData() {
         return data;
     }
 
-    public Response setData(String data) {
+    public Response setData(Object data) {
         this.data = data;
         return this;
     }
