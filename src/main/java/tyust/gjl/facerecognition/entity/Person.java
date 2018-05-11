@@ -6,24 +6,64 @@ package tyust.gjl.facerecognition.entity;
  */
 public class Person {
 
-    String username;
-    String imagename;
+    private int personId;
+    private int userId;
+    private String photoName;
+    private String phone;
+    private String photoAddress;
+    private String photoTime;
 
-    public String getUsername() {
-        return username;
+    public int getPersonId() {
+        return personId;
     }
 
-    public Person setUsername(String username) {
-        this.username = username;
+    public Person setPersonId(int personId) {
+        this.personId = personId;
         return this;
     }
 
-    public String getImagename() {
-        return imagename;
+    public int getUserId() {
+        return userId;
     }
 
-    public Person setImagename(String imagename) {
-        this.imagename = imagename;
+    public Person setUserId(int userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public String getPhotoName() {
+        return photoName;
+    }
+
+    public Person setPhotoName(String photoName) {
+        this.photoName = photoName;
+        return this;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Person setPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    public String getPhotoAddress() {
+        return photoAddress;
+    }
+
+    public Person setPhotoAddress(String photoAddress) {
+        this.photoAddress = photoAddress;
+        return this;
+    }
+
+    public String getPhotoTime() {
+        return photoTime;
+    }
+
+    public Person setPhotoTime(String photoTime) {
+        this.photoTime = photoTime;
         return this;
     }
 }

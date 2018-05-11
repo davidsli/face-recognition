@@ -60,7 +60,7 @@ $("#submit").click(function () {
         var selector;
         var url;
         res.data.forEach(function(value, index) {
-            url = "/upload/faceimages/" + value.person.imagename;
+            url = "/upload/faceimages/" + value.person.imageName;
             console.log(times)
             switch (times) {
                 case 0 : {
