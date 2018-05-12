@@ -31,4 +31,9 @@ public class PageController {
         return "register";
     }
 
+    @RequestMapping("/show")
+    public String show() {
+        return "show";
+    }
+
 }

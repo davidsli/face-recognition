@@ -14,7 +14,7 @@ public class Response {
         this.data = "error";
     }
 
-    public Response(String code, String data) {
+    public Response(String code, Object data) {
         this.code = code;
         this.data = data;
     }
