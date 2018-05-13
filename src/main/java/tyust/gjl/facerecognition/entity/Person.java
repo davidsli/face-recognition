@@ -8,10 +8,21 @@ public class Person {
 
     private int personId;
     private int userId;
+    private String personName;
     private String photoName;
     private String phone;
     private String photoAddress;
     private String photoTime;
+    private Integer type;
+
+    public String getPersonName() {
+        return personName;
+    }
+
+    public Person setPersonName(String personName) {
+        this.personName = personName;
+        return this;
+    }
 
     public int getPersonId() {
         return personId;
@@ -64,6 +75,16 @@ public class Person {
 
     public Person setPhotoTime(String photoTime) {
         this.photoTime = photoTime;
+        return this;
+    }
+
+
+    public int getType() {
+        return type;
+    }
+
+    public Person setType(int type) {
+        this.type = type;
         return this;
     }
 }

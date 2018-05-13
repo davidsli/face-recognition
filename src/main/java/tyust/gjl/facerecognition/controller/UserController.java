@@ -22,6 +22,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @RequestMapping("/login")
     public Response login(User user, HttpSession session) {
         if (!CheckUtils.loginCheck(user)) {
             return new Response("400", "username or password is empty");
@@ -35,6 +36,7 @@ public class UserController {
     }
 
 
+    @RequestMapping("/logout")
     public Response logout(User user, HttpSession session) {
         User loginUser = (User)session.getAttribute("user");
         if (loginUser == null) {
@@ -44,6 +46,7 @@ public class UserController {
         return new Response("200", "logout succeeds");
     }
 
+    @RequestMapping("/register")
     public Response register(User user, @RequestParam(value = "repeatPassword", required = false) String repeatPassword) {
         if (!CheckUtils.loginCheck(user) || null == repeatPassword || "".equals(repeatPassword)) {
             return new Response("400", "please input all information");

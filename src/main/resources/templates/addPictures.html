@@ -45,6 +45,11 @@
 
             <i class="am-header-icon am-icon-home"></i>
         </a>
+        <a href="/page/show" class="">
+              <span class="am-header-nav-title">
+                浏览
+              </span>
+        </a>
     </div>
 
     <h1 class="am-header-title">
@@ -88,8 +93,28 @@
     </legend>
       <div class="am-form-group">
       <label for="doc-ipt-email-1">图中人物姓名</label>
-        <input type="text" id="username" class="voteTitle" placeholder="请输入图中人物姓名">
+        <input type="text" id="personName" class="voteTitle" placeholder="请输入图中人物姓名">
     </div>
+      <div class="am-form-group">
+          <label for="doc-ipt-email-1">电话</label>
+          <input type="text" id="phone" class="voteTitle" placeholder="请输入电话">
+      </div>
+      <div class="am-form-group">
+          <label for="doc-ipt-email-1">拍照地点</label>
+          <input type="text" id="photoTime" class="voteTitle" placeholder="请输入拍照地点">
+      </div>
+      <div class="am-form-group">
+          <label for="doc-ipt-email-1">拍照时间</label>
+          <input type="date" id="photoAddress" class="voteTitle" placeholder="请输入拍照时间">
+      </div>
+      <div class="am-form-group">
+          <label class="am-radio-inline">
+              <input type="radio"  value="1" name="type" checked> 走失孩子
+          </label>
+          <label class="am-radio-inline">
+              <input type="radio" value="2" name="type"> 已找到孩子
+          </label>
+      </div>
       <div class="am-form-group am-form-file">
           <table class="am-table color-table-upload"></table>
          <button type="button" class="am-btn am-btn-default am-btn-sm">

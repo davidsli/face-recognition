@@ -37,13 +37,19 @@ function dataURItoBlob(dataURI) {
 }
 
 $("#submit").click(function () {
+    $("#file").on('change', preview);
     var fd = new FormData();
     var blob = dataURItoBlob(dataURL);
     fd.append('file', blob);
-    fd.append("username", $("#username").val());
+    fd.append("personName", $("#personName").val());
+    fd.append("phone", $("#phone").val());
+    fd.append("photoAddress", $("#photoAddress").val());
+    fd.append("photoTime", $("#photoTime").val());
+    fd.append("type", $("input[name='type']:checked").val());
+    console.log($("input[name='type']:checked").val());
     $.ajax({
         type: 'POST',
-        url: '/picture/add',
+        url: '/person/add',
         data: fd,
         processData: false, // 不会将 data 参数序列化字符串
         contentType: false, // 根据表单 input 提交的数据使用其默认的 contentType

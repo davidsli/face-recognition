@@ -44,9 +44,11 @@ $("#submit").click(function () {
     var fd = new FormData();
     var blob = dataURItoBlob(dataURL);
     fd.append('file', blob);
+    fd.append("type", $("input[name='type']:checked").val());
+    var type = $("input[name='type']:checked").val()
     $.ajax({
         type: 'POST',
-        url: '/picture/search',
+        url: '/person/search',
         data: fd,
         processData: false, // 不会将 data 参数序列化字符串
         contentType: false, // 根据表单 input 提交的数据使用其默认的 contentType
@@ -60,7 +62,7 @@ $("#submit").click(function () {
         var selector;
         var url;
         res.data.forEach(function(value, index) {
-            url = "/upload/faceimages/" + value.person.imageName;
+            url = type == 1 ? "/upload/lostfaceimages/" :  "/upload/findfaceimages/" + value.person.imageName;
             console.log(times)
             switch (times) {
                 case 0 : {

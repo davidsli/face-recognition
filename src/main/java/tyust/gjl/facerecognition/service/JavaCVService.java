@@ -99,7 +99,7 @@ public class JavaCVService {
     }
 
 
-    public boolean detectFace(String imagePath, String saveImageName, boolean save) throws Exception {
+    public boolean detectFace(String imagePath, String saveImageName,int type, boolean save) throws Exception {
 
         if (imagePath == null || "".equals(imagePath)) {
             return false;
@@ -107,13 +107,9 @@ public class JavaCVService {
 
         logger.info("Running DetectFace ... ");
 
-
         Mat image = Imgcodecs.imread(imagePath);
-
         MatOfRect faceDetections = new MatOfRect();
-
         faceDetector.detectMultiScale(image, faceDetections);
-
         logger.info(String.format("Detected %s faces", faceDetections.toArray().length));
 
         Rect[] rects = faceDetections.toArray();
@@ -123,12 +119,13 @@ public class JavaCVService {
         if (!save) {
             return true;
         }
-        // 在每一个识别出来的人脸周围画出一个方框
-//        Rect rect = rects[0];
-//        Imgproc.rectangle(image, new Point(rect.x - 2, rect.y - 2),
-//                new Point(rect.x + rect.width, rect.y + rect.height),
-//                new Scalar(0, 255, 0));
-        String outFile = new ClassPathResource("static/upload/faceimages").getFile().getPath() + "/" + saveImageName;
+//         在每一个识别出来的人脸周围画出一个方框
+        Rect rect = rects[0];
+        Imgproc.rectangle(image, new Point(rect.x - 2, rect.y - 2),
+                new Point(rect.x + rect.width, rect.y + rect.height),
+                new Scalar(0, 255, 0));
+        String outFile =
+                new ClassPathResource(type == Global.LOST_PERSON ? "static/upload/lostfaceimages" : "static/upload/findfaceimages").getFile().getPath() + "/" + saveImageName;
         Imgcodecs.imwrite(outFile, image);
         logger.info(String.format("人脸识别成功，人脸图片文件为： %s", outFile));
         return true;
