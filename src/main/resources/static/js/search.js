@@ -62,7 +62,10 @@ $("#submit").click(function () {
         var selector;
         var url;
         res.data.forEach(function(value, index) {
-            url = type == 1 ? "/upload/lostfaceimages/" :  "/upload/findfaceimages/" + value.person.imageName;
+            var person = value.person;
+            console.log(person.type);
+            console.log(person.type === 1)
+            url = (person.type === 1 ? "/upload/lostfaceimages/" :  "/upload/findfaceimages/") + person.photoName;
             console.log(times)
             switch (times) {
                 case 0 : {
@@ -86,11 +89,20 @@ $("#submit").click(function () {
                     break;
                 }
             }
+            //
             selector.append("<figure data-am-widget=\"figure\" class=\"am am-figure am-figure-default \"   data-am-figure=\"{  pureview: 'true' }\">" +
                 "<img src=\"" + web_root + url + "\" data-rel=\"" + web_root + url + "\" alt=\"" +
-                value.person.username + " : 匹配度" + Math.round(value.compareValue * 100)  + "%" + "\" />" +
+                "匹配度:" + Math.round(value.compareValue * 100)  + "%" + " | " +
+                "姓名：" + person.personName + " | " +
+                "联系电话：" + person.phone + " | " +
+                "拍照时间：" + person.photoTime + " | " +
+                "拍照地点：" + person.photoAddress + " | " + "\" />" +
                 "<figcaption class=\"am-figure-capition-btm\">" +
-                value.person.username + " : 匹配度" + Math.round(value.compareValue * 100)  + "%" +
+                "匹配度:" + Math.round(value.compareValue * 100)  + "%" + "<br>" +
+                "姓名：" + person.personName + "<br>" +
+                "联系电话：" + person.phone + "<br>" +
+                "拍照时间：" + person.photoTime + "<br>" +
+                "拍照地点：" + person.photoAddress + "<br>" +
                 "</figcaption></figure>");
         });
         AMUI.figure.init();

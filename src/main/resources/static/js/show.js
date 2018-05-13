@@ -31,14 +31,14 @@ $(document).ready(function () {
                 "<img src=\"" + web_root + url + "\" data-rel=\"" + web_root + url + "\" alt=\"" +
                 "姓名：" + value.personName + " | " +
                 "联系电话：" + value.phone + " | " +
-                "拍照时间：" + value.personTime + " | " +
-                "拍照地点：" + value.personAddress + " | " +"\" />" +
+                "拍照时间：" + value.photoTime + " | " +
+                "拍照地点：" + value.photoAddress + " | " +"\" />" +
                 "<figcaption class=\"am-figure-capition-btm\">" +
                 "姓名：" + value.personName + "<br>" +
                 "联系电话：" + value.phone + "<br>" +
-                "拍照时间：" + value.personTime + "<br>" +
-                "拍照地点：" + value.personAddress + "<br>" +
-                "</figcaption><br><a href='\" + web_root + \"/person/\" + value.personId + \"'>查看详情</a></figure>");
+                "拍照时间：" + value.photoTime + "<br>" +
+                "拍照地点：" + value.photoAddress + "<br>" +
+                "</figcaption></figure>");
         });
         find.forEach(function(value, index) {
             url = "/upload/findfaceimages/" + value.photoName;
@@ -56,14 +56,14 @@ $(document).ready(function () {
                 "<img src=\"" + web_root + url + "\" data-rel=\"" + web_root + url + "\" alt=\"" +
                 "姓名：" + value.personName + " | " +
                 "联系电话：" + value.phone + " | " +
-                "拍照时间：" + value.personTime + " | " +
-                "拍照地点：" + value.personAddress + " | " +"\" />" +
+                "拍照时间：" + value.photoTime + " | " +
+                "拍照地点：" + value.photoAddress + " | " +"\" />" +
                 "<figcaption class=\"am-figure-capition-btm\">" +
                 "姓名：" + value.personName + "<br>" +
                 "联系电话：" + value.phone + "<br>" +
-                "拍照时间：" + value.personTime + "<br>" +
-                "拍照地点：" + value.personAddress + "<br>" +
-                "</figcaption><br><a href='\" + web_root + \"/person/\" + value.personId + \"'>查看详情</a></figure>");
+                "拍照时间：" + value.photoTime + "<br>" +
+                "拍照地点：" + value.photoAddress + "<br>" +
+                "</figcaption></figure>");
         });
         AMUI.figure.init();
     }).error(function (err) {

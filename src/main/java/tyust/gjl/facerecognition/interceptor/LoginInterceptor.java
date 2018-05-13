@@ -2,6 +2,7 @@ package tyust.gjl.facerecognition.interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import tyust.gjl.facerecognition.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +15,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        String loginUser = (String) httpServletRequest.getSession().getAttribute("user");
+        User loginUser = (User) httpServletRequest.getSession().getAttribute("user");
 
         if (loginUser == null) {
             httpServletRequest.getRequestDispatcher("/page/login").forward(httpServletRequest, httpServletResponse);
