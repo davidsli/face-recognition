@@ -2,6 +2,7 @@ package tyust.gjl.facerecognition.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -111,6 +112,12 @@ public class PersonController {
         results.put("lostChildren", lost);
         results.put("findChildren", find);
         return new Response("200", results);
+    }
+
+    @GetMapping("/slider")
+    public Response slider() {
+        List<Person> slider = personService.getSlider();
+        return new Response("200", slider);
     }
 
 }

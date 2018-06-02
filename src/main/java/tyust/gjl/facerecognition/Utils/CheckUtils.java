@@ -23,11 +23,16 @@ public class CheckUtils {
         String photoTime = person.getPhotoTime();
         String photoAddress = person.getPhotoAddress();
         int type = person.getType();
-        return personName != null && !"".equals(personName) &&
-                phone != null && !"".equals(phone) &&
-                photoTime != null && !"".equals(photoTime) &&
-                photoAddress != null && !"".equals(photoAddress) &&
-                (type == Global.LOST_PERSON || type == Global.FIND_PERSON);
+        if (type == Global.LOST_PERSON) {
+            return personName != null && !"".equals(personName) &&
+                    phone != null && !"".equals(phone);
+        } else {
+            return personName != null && !"".equals(personName) &&
+                    phone != null && !"".equals(phone) &&
+                    photoTime != null && !"".equals(photoTime) &&
+                    photoAddress != null && !"".equals(photoAddress) &&
+                    type == Global.FIND_PERSON;
+        }
     }
 
 }

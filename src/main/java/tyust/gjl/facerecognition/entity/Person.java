@@ -8,12 +8,38 @@ public class Person {
 
     private int personId;
     private int userId;
+    private int age;
+    private String note;
     private String personName;
     private String photoName;
     private String phone;
     private String photoAddress;
     private String photoTime;
     private Integer type;
+    private Long addTime;
+
+    public int getAge() {
+        return age;
+    }
+
+    public Person setAge(int age) {
+        this.age = age;
+        return this;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public Person setNote(String note) {
+        this.note = note;
+        return this;
+    }
+
+    public Person setType(Integer type) {
+        this.type = type;
+        return this;
+    }
 
     public String getPersonName() {
         return personName;

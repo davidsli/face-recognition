@@ -25,6 +25,28 @@ function preview(e) {
 
 }
 
+$(document).ready(function () {
+    $(".hide").hide();
+});
+
+$('input[type=radio][name=type]').change(function() {
+    $(".hide").hide();
+    if (this.value === '1') {
+        $("#name-group").show();
+        $("#age-group").show();
+        $("#phone-group").show();
+        $("#desc-group").show();
+        $("#desc-group label").empty().text("走失描述");
+    }
+    else if (this.value === '2') {
+        $("#photo-address-group").show();
+        $("#photo-time-group").show();
+        $("#phone-group").show();
+        $("#desc-group").show();
+        $("#desc-group label").empty().text("其他信息");
+    }
+});
+
 function dataURItoBlob(dataURI) {
     var byteString = atob(dataURI.split(',')[1]);
     var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
@@ -46,6 +68,8 @@ $("#submit").click(function () {
     fd.append("photoAddress", $("#photoAddress").val());
     fd.append("photoTime", $("#photoTime").val());
     fd.append("type", $("input[name='type']:checked").val());
+    fd.append("age", $("#age").val());
+    fd.append("note", $("#note").val());
     console.log($("input[name='type']:checked").val());
     $.ajax({
         type: 'POST',

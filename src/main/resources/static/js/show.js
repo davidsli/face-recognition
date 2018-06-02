@@ -30,14 +30,14 @@ $(document).ready(function () {
             selector.append("<figure data-am-widget=\"figure\" class=\"am am-figure am-figure-default \"   data-am-figure=\"{  pureview: 'true' }\">" +
                 "<img src=\"" + web_root + url + "\" data-rel=\"" + web_root + url + "\" alt=\"" +
                 "姓名：" + value.personName + " | " +
-                "联系电话：" + value.phone + " | " +
-                "拍照时间：" + value.photoTime + " | " +
-                "拍照地点：" + value.photoAddress + " | " +"\" />" +
+                "年龄：" + value.age + " | " +
+                "爱心热线：" + value.phone + " | " +
+                "走失描述：" + value.note + " | " + "\" />" +
                 "<figcaption class=\"am-figure-capition-btm\">" +
                 "姓名：" + value.personName + "<br>" +
-                "联系电话：" + value.phone + "<br>" +
-                "拍照时间：" + value.photoTime + "<br>" +
-                "拍照地点：" + value.photoAddress + "<br>" +
+                "年龄：" + value.age + "<br>" +
+                "爱心热线：" + value.phone + "<br>" +
+                "走失描述：" + value.note + "<br>" +
                 "</figcaption></figure>");
         });
         find.forEach(function(value, index) {
@@ -54,15 +54,15 @@ $(document).ready(function () {
             }
             selector.append("<figure data-am-widget=\"figure\" class=\"am am-figure am-figure-default \"   data-am-figure=\"{  pureview: 'true' }\">" +
                 "<img src=\"" + web_root + url + "\" data-rel=\"" + web_root + url + "\" alt=\"" +
-                "姓名：" + value.personName + " | " +
-                "联系电话：" + value.phone + " | " +
+                "爱心热线：" + value.phone + " | " +
                 "拍照时间：" + value.photoTime + " | " +
-                "拍照地点：" + value.photoAddress + " | " +"\" />" +
+                "拍照地点：" + value.photoAddress + " | " +
+                "其他信息：" + value.note + " | " + "\" />" +
                 "<figcaption class=\"am-figure-capition-btm\">" +
-                "姓名：" + value.personName + "<br>" +
-                "联系电话：" + value.phone + "<br>" +
+                "爱心热线：" + value.phone + "<br>" +
                 "拍照时间：" + value.photoTime + "<br>" +
                 "拍照地点：" + value.photoAddress + "<br>" +
+                "其他信息：" + value.note + "<br>" +
                 "</figcaption></figure>");
         });
         AMUI.figure.init();

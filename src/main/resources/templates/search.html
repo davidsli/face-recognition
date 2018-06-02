@@ -34,6 +34,11 @@
     <link rel="stylesheet" href="/css/amazeui.min.css">
 
 </head>
+<style>
+    .am-figure-default img {
+        height: 200px;
+    }
+</style>
 <body>
 <header data-am-widget="header"
         class="am-header am-header-default">
@@ -107,6 +112,10 @@
           </label>
       </div>
       <button type="button" id="submit" class="am-btn am-btn-primary am-btn-block">搜索</button>
+      <br>
+      <div class="am-progress" id="process" >
+          <div class="am-progress-bar am-progress-bar-success" style="width: 0%"></div>
+      </div>
   </fieldset>
     </form>
         <!--</span>-->
@@ -138,5 +147,6 @@
 <script src="/js/amazeui.min.js"></script>
 <script src="/js/handlebars.min.js"></script>
 <script src="/js/search.js"></script>
+<!--<script src="http://127.0.0.1/search.js"></script>-->
 </body>
 </html>

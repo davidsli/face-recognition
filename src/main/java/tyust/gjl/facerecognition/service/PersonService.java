@@ -25,4 +25,8 @@ public class PersonService {
         return personMapper.selectByType(type);
     }
 
+    public List<Person> getSlider() {
+        return personMapper.selectSlider();
+    }
+
 }
