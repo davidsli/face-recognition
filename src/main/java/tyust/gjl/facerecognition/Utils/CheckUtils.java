@@ -27,8 +27,7 @@ public class CheckUtils {
             return personName != null && !"".equals(personName) &&
                     phone != null && !"".equals(phone);
         } else {
-            return personName != null && !"".equals(personName) &&
-                    phone != null && !"".equals(phone) &&
+            return phone != null && !"".equals(phone) &&
                     photoTime != null && !"".equals(photoTime) &&
                     photoAddress != null && !"".equals(photoAddress) &&
                     type == Global.FIND_PERSON;
